@@ -57,17 +57,27 @@ class Inventory {
             return;
         }
         this.products.forEach(product => console.log(product.getDetails()));
-        }
+    }
 
     placeOrder(orderId, product, quantity) {
         this.Orders.push(Order);
         console.log(`Order ${orderId} placed successfully.`);
-        }
+    }
 
     listOrders() {
         if (this.Orders.length === 0) {
         console.log("No orders placed.");
         return this.Orders.forEach(order => console.log(order.getOrderDetails()));
+        }
+    }
+
+    restockProduct(productId, quantity) {
+        if (product === 0) {
+            product.stock += quantity; // Increase stock of the product
+            console.log(`Product ${product.name} restocked. New stock: ${product.stock}`);
+        } else {
+            console.log(`Product with ID ${productId} not found.`);
+    
         }
     }
 }
@@ -97,3 +107,7 @@ inventory.placeOrder(601, prod1, 2);
 inventory.listOrders(); // Expected output: "Order ID: 601, Product: Laptop, Quantity: 2, Total Price: $2400" (I couldn't get this so i improvised)
 console.log(prod1.getDetails()); // Expected output: "Product: Laptop, ID: 101, Price: $1200, Stock: 3"
 
+// 5
+inventory.restockProduct(101, 5);
+console.log(prod1.getDetails()); 
+// Expected output: "Product: Laptop, ID: 101, Price: $1200, Stock: 8"
