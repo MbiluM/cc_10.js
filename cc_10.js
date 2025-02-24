@@ -33,10 +33,14 @@ class Order {
 }
 
 
-// Task 3 - Created Inventory Class
+// Task 3 - Created Inventory Class & Task 4 - Implemented Order Management
 class Inventory {
     constructor() {
-        this.products = []
+        this.products = [];
+        this.Orders = [];
+    }
+        getOrderDetails() {
+            return `Order ID: ${this.orderId}, Product: ${this.product.name}, Quantity: ${this.quantity}, Total Price: $${this.product.price * this.quantity}`;
     }
 
     addProduct(product) {
@@ -54,6 +58,18 @@ class Inventory {
         }
         this.products.forEach(product => console.log(product.getDetails()));
         }
+
+    placeOrder(orderId, product, quantity) {
+        this.Orders.push(Order);
+        console.log(`Order ${orderId} placed successfully.`);
+        }
+
+    listOrders() {
+        if (this.Orders.length === 0) {
+        console.log("No orders placed.");
+        return this.Orders.forEach(order => console.log(order.getOrderDetails()));
+        }
+    }
 }
 
 
@@ -75,3 +91,9 @@ console.log(prod1.getDetails()); // Expected output: "Product: Laptop, ID: 101, 
 const inventory = new Inventory();
 inventory.addProduct(prod1);
 inventory.listProducts(); // Expected output: "Product: Laptop, ID: 101, Price: $1200, Stock: 5"
+
+// 4
+inventory.placeOrder(601, prod1, 2);
+inventory.listOrders(); // Expected output: "Order ID: 601, Product: Laptop, Quantity: 2, Total Price: $2400" (I couldn't get this so i improvised)
+console.log(prod1.getDetails()); // Expected output: "Product: Laptop, ID: 101, Price: $1200, Stock: 3"
+
